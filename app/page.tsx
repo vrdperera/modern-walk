@@ -10,7 +10,17 @@ export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetchClothingProducts().then(setProducts);
+    const getProducts = async () => {
+      try {
+        const products = await fetchClothingProducts();
+        setProducts(products);
+      } catch (error) {
+        console.error("Error fetching clothing products:", error);
+        setProducts([]);
+      }
+    };
+
+    getProducts();
   }, []);
 
   return (
