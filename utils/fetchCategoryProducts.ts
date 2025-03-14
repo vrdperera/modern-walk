@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "@/config/api";
 import { Product } from "@/types/types";
 
 export const fetchCategoryProducts = async (
@@ -8,7 +9,7 @@ export const fetchCategoryProducts = async (
       category === "mens-clothing" ? "men's clothing" : "women's clothing";
 
     const response = await fetch(
-      `https://fakestoreapi.com/products/category/${formattedCategory}`
+      `${API_BASE_URL}/products/category/${formattedCategory}`
     );
 
     if (!response.ok) {

@@ -1,10 +1,11 @@
+import { API_BASE_URL } from "@/config/api";
 import { Product } from "@/types/types";
 
 export const fetchClothingProducts = async (): Promise<Product[]> => {
   try {
     const [mensResponse, womensResponse] = await Promise.all([
-      fetch("https://fakestoreapi.com/products/category/men's clothing"),
-      fetch("https://fakestoreapi.com/products/category/women's clothing"),
+      fetch(`${API_BASE_URL}/products/category/men's clothing`),
+      fetch(`${API_BASE_URL}/products/category/women's clothing`),
     ]);
 
     const [mensProducts, womensProducts]: [Product[], Product[]] =
